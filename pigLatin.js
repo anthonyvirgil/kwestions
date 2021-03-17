@@ -1,25 +1,22 @@
-const maxRecurringChar = (text) => {
-	let charMap = {};
-	let maxCharValue = 0;
-	let maxChar = '';
+const pigLatin = (word) => {
+	const vowels = ['a', 'e', 'i', 'o', 'u'];
+	let vowelIndex = 0;
 
-	for (let i = 0; i < text.length; i++) {
-		let char = text[i];
-		if (charMap.hasOwnProperty(char)) {
-			charMap[char] += 1;
-		} else {
-			charMap[char] = 1;
+	if (vowels.includes(word[0])) {
+		return word + 'way';
+	} else {
+		for (let i = 0; i < word.length; i++) {
+			if (vowels.includes(word[i])) {
+				vowelIndex = i;
+				break;
+			}
 		}
 	}
 
-	for (let char in charMap) {
-		if (charMap[char] > maxCharValue) {
-			maxChar = char;
-			maxCharValue = charMap[char];
-		}
-	}
-
-	return maxChar;
+	return word.slice(vowelIndex) + word.slice(0, vowelIndex) + 'ay';
 };
 
-console.log(maxRecurringChar('aabbacbabdbab'));
+console.log(pigLatin('amazon'));
+console.log(pigLatin('paris'));
+console.log(pigLatin('explain'));
+console.log(pigLatin('glove'));
