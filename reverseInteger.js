@@ -1,7 +1,6 @@
 const reverseInteger = (number) => {
-	const numberString = number.toString();
-	const reverseString = [...numberString].reduce((acc, char) => char + acc, '');
-	return parseInt(reverseString) * Math.sign(number);
+	let reversed = parseInt(`${number}`.split('').reverse().join(''));
+	return number < 0 ? reversed * -1 : reversed;
 };
 
 console.log(reverseInteger(-123)); // -321
